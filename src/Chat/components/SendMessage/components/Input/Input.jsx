@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import { SpinnerIcon } from "../SpinnerIcon";
 
 const InputContainer = styled.View`
   margin-left: 15px;
@@ -21,7 +22,6 @@ const IconContainer = styled.TouchableOpacity`
   align-items: center;
   height: 100%;
   width: 30px;
-}
 `;
 
 const SendIconContainer = styled.TouchableOpacity`
@@ -47,7 +47,7 @@ const StyledInput = styled.TextInput`
 `;
 
 export const Input = (props) => {
-  const { isRecording, startRecording, stopRecording } = props;
+  const { isRecording, startRecording, stopRecording, fetching } = props;
   const [messageValue, setMessageValue] = useState("");
 
   const renderIcon = () => {
@@ -60,9 +60,9 @@ export const Input = (props) => {
         />
       );
     }
-    // if (isRecording) {
-    //   return <SpinnerIcon />;
-    // }
+    if (fetching) {
+      return <SpinnerIcon />;
+    }
 
     return <Icon name="multitrack-audio" size={20} color="gray" />;
   };

@@ -18,7 +18,7 @@ const StyledText = styled.Text`
 `;
 
 export const SendMessage = (props) => {
-  const { sendFile } = props;
+  const { sendFile, fetching } = props;
   const recordingRef = useRef(null);
   const [isRecording, setIsRecording] = useState(false);
   const [audioURI, setAudioURI] = useState(null);
@@ -91,6 +91,7 @@ export const SendMessage = (props) => {
           isRecording={isRecording}
           startRecording={startRecording}
           stopRecording={stopRecording}
+          fetching={fetching}
         />
       </StyledKeyboardAvoidingView>
       {isRecording && <RecorderView stopRecording={stopRecording} />}

@@ -10,7 +10,7 @@ export const AppRouter = () => {
   return (
     <PaperProvider>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Chat" screenOptions={{ headerShown: false }}>
+          <Stack.Navigator initialRouteName="Authentication" screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Authentication" component={Authentication} />
             <Stack.Screen name="Chat" component={Chat} />
           </Stack.Navigator>

@@ -1,80 +1,142 @@
 import React from "react";
+import styled from "@emotion/native";
 import {
-  Text,
-  TouchableOpacity,
-  Button,
   View,
-  StyleSheet,
-  TextInput,
+  Dimensions,
 } from "react-native";
+import { PasswordInput } from "../PasswordInput";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  formContainer: {
-    width: "100%",
-    height: 200,
-    paddingHorizontal: 30,
-  },
-  title: {
-    textAlign: "center",
-    fontSize: 20,
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
-  link: {
-    color: "blue",
-    textDecorationLine: "underline",
-    textAlign: "center",
-    fontSize: 12,
-  },
-  buttonContainer: {
-    marginTop: 16,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 4,
-    padding: 12,
-    marginBottom: 8,
-  },
-});
+const Container = styled.View`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  // background-color: red;
+`;
+
+const FormContainer = styled.View`
+  width: 100%;
+  height: 200px;
+  padding-horizontal: 30px;
+`;
+
+const Title = styled.Text`
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  // margin-bottom: 10px;
+  color: #f8f8f8;
+  height: 34px;
+`;
+
+const SubTitle = styled.Text`
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 36px;
+  color: #949494;
+  height: 26px;
+`;
+
+const StyledText = styled.Text`
+  color: #949494;
+  font-size: 13px;
+  text-align: center;
+  font-family: "Inter-Medium";
+`;
+
+const HighlightedText = styled.Text`
+  color: #21bf73;
+  text-decoration-line: underline;
+`;
+
+const ButtonContainer = styled.View`
+  position: absolute;
+  bottom: 0;
+  height: 150px;
+  width: 100%;
+  display: flex;
+`;
+
+const Input = styled.TextInput`
+  border-width: 1px;
+  border-color: #5e5e5e;
+  border-radius: 15px;
+  padding: 12px;
+  padding-left: 23px;
+  margin-bottom: 8px;
+`;
+
+const TextWrapper = styled.View`
+  margin-top: 10px;
+`;
+
+const Button = styled.Pressable`
+  width: 90%;
+  background-color: #21bf73;
+  align-items: center;
+  padding: 10px;
+  margin: 0 auto;
+  height: 66px;
+  display: flex;
+  justify-content: center;
+  border-radius: 15px;
+`;
+
+const ButtonText = styled.Text`
+  color: #ffffff;
+  font-family: "Inter-Regular";
+  font-size: 16px;
+`;
+
+const SignInContainer = styled.View`
+  margin-top: 21px;
+`;
 
 export const SignupForm = ({ toggleForm, navigation }) => {
+  const { height } = Dimensions.get("window");
+
   return (
-    <View style={styles.container}>
-      <View style={styles.formContainer}>
+    <Container screenHeight={height}>
+      <FormContainer>
         <View>
-          <Text style={styles.title}>Sign Up Form</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Email"
+          <Title>Sign Up</Title>
+          <SubTitle>It only takes a minute to creae your account</SubTitle>
+          <Input
+            placeholder="Email address"
             keyboardType="email-address"
+            placeholderTextColor="#CCCCCC"
             // onChangeText={setEmail}
             // value={email}
           />
-          <TextInput
-            style={styles.input}
+          <PasswordInput
             placeholder="Password"
-            secureTextEntry
             // onChangeText={setPassword}
             // value={password}
           />
-          <View>
-            <TouchableOpacity onPress={toggleForm}>
-              <Text style={styles.link}>Sign in</Text>
-            </TouchableOpacity>
-          </View>
+          <TextWrapper>
+            <StyledText>
+              I agree the <HighlightedText>Terms of Use</HighlightedText> and{" "}
+              <HighlightedText>Privacy Policy</HighlightedText>
+            </StyledText>
+            {/* <TouchableOpacity onPress={toggleForm}>
+              <Link>Sign in</Link>
+            </TouchableOpacity> */}
+          </TextWrapper>
         </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            title="Sign Up"
-            onPress={() => navigation.navigate("Chat")}
-          />
-        </View>
-      </View>
-    </View>
+      </FormContainer>
+      <ButtonContainer>
+        <Button onPress={() => navigation.navigate("Chat")}>
+          <ButtonText>Sign Up</ButtonText>
+        </Button>
+        <SignInContainer>
+          <StyledText>
+            Already registered?{" "}
+            <HighlightedText onPress={toggleForm}>
+              Sign In
+            </HighlightedText>
+          </StyledText>
+        </SignInContainer>
+      </ButtonContainer>
+    </Container>
   );
 };

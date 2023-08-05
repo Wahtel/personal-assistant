@@ -5,6 +5,7 @@ import { LoginForm, SignupForm } from "./components";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#0A0C0B",
   },
   content: {
     flex: 1,
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
 });
 
 export const AuthenticationComponent = ({ navigation }) => {
-  const [formState, setFormState] = useState("login");
+  const [formState, setFormState] = useState("signup");
 
   const toggleForm = () => {
     setFormState(formState === "login" ? "signup" : "login");
