@@ -21,13 +21,14 @@ const LogoWrapper = styled.View`
   display: flex;
   justify-Content: flex-start;
   align-items: center;
+  // background-color: #1f1e1e;
 `;
 
 const Logo = styled.View`
-  width: 20px;
-  height: 20px;
-  background-color: ${({ type }) => (type === "chat" ? "#c083fc" : "#3299DA")};
-  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: ${({ type }) => (type === "assistant" ? "#21BF73" : "#3299DA")};
+  border-radius: 11px;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -40,17 +41,22 @@ const LogoText = styled.Text`
 
 const NameLabel = styled.Text`
   color: #c6c6c6;
-  font-size: 10px;
-  text-transform: uppercase;
+  font-size: 15px;
+  font-family: "Inter-Regular";
+  // text-transform: uppercase;
   margin-left: 10px;
 `;
 
 const Message = styled.Text`
-  color: #fff;
+  // color: #ffffff;
+  color: #949494;
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  margin-left: 30px;
+  margin-left: 5px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-family: "Inter-Regular";
 `;
 
 export const Messages = (props) => {
@@ -77,7 +83,7 @@ export const Messages = (props) => {
             <Logo type={message.type}>
               {isUser && <LogoText>{logoText}</LogoText>}
             </Logo>
-            <NameLabel>{isUser ? "Paul" : "GPT"}</NameLabel>
+            <NameLabel>{isUser ? "Paul" : "P.A."}</NameLabel>
           </LogoWrapper>
           <Message>{message.message}</Message>
         </MessageContainer>

@@ -3,15 +3,16 @@ import styled from "@emotion/native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { SpinnerIcon } from "../SpinnerIcon";
+import { SendMessageIcon, RecordAudioIcon } from "../../components";
 
 const InputContainer = styled.View`
   margin-left: 15px;
   flex-direction: row;
   position: relative;
   display: flex;
-  height: 40px;
+  height: 50px;
   align-items: center;
-  background-color: black;
+  background-color: #0A0C0B;
 `;
 
 const IconContainer = styled.TouchableOpacity`
@@ -28,44 +29,66 @@ const SendIconContainer = styled.TouchableOpacity`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 35px;
-  margin-left: 15px;
-  width: 35px;
-  background-color: #1f1e1e;
+  height: 50px;
+  // margin-left: 15px;
+  // background-color: red;
   border-radius: 50%;
-  opacity: ${({ isDisabled }) => (isDisabled ? 0.5 : 1)};
+  // opacity: ${({ isDisabled }) => (isDisabled ? "0.5" : "1")};
+  flex: 1;
 `;
 
 const StyledInput = styled.TextInput`
   background-color: #1f1e1e;
-  width: 85%;
-  border-radius: 50px;
-  height: 40px;
+  width: 80%;
+  border-radius: 15px;
+  height: 50px;
   padding-left: 20px;
   color: #dedede;
+  border: 1px solid #5E5E5E;
   ${({ isRecording }) => isRecording && "border: 1px solid #3f37c9;"}
 `;
 
 export const Input = (props) => {
-  const { isRecording, startRecording, stopRecording, fetching } = props;
+  const {
+    isRecording,
+    startRecording,
+    stopRecording,
+    fetching,
+    communicationState,
+    toggleCommunicationState,
+  } = props;
   const [messageValue, setMessageValue] = useState("");
 
-  const renderIcon = () => {
-    if (isRecording) {
+  console.log(communicationState, "communicationState");
+
+  // const renderIcon = () => {
+  //   if (isRecording) {
+  //     return (
+  //       <MaterialCommunityIcon
+  //         name="stop-circle-outline"
+  //         size={25}
+  //         color="#3f37c9"
+  //       />
+  //     );
+  //   }
+  //   if (fetching) {
+  //     return <SpinnerIcon />;
+  //   }
+
+  //   return <Icon name="multitrack-audio" size={20} color="gray" />;
+  // };
+
+  const renderActionIcon = () => {
+    if (communicationState === "audio") {
       return (
-        <MaterialCommunityIcon
-          name="stop-circle-outline"
-          size={25}
-          color="#3f37c9"
-        />
+        <RecordAudioIcon />
       );
     }
-    if (fetching) {
-      return <SpinnerIcon />;
-    }
 
-    return <Icon name="multitrack-audio" size={20} color="gray" />;
+    return <SendMessageIcon />;
   };
+
+  console.log(!messageValue.length, "!messageValue.length");
 
   return (
     <InputContainer>
@@ -78,20 +101,16 @@ export const Input = (props) => {
         keyboardAppearance="dark"
         editable={!isRecording}
       />
-      {!messageValue && (
+      {/* {!messageValue && (
         <IconContainer onPress={isRecording ? stopRecording : startRecording}>
           {renderIcon()}
         </IconContainer>
-      )}
+      )} */}
       <SendIconContainer
-        disabled={!messageValue.length}
-        isDisabled={!messageValue.length}
+        onPress={toggleCommunicationState}
+        activeOpacity={1}
       >
-        <Icon
-          name="arrow-upward"
-          size={20}
-          color={!messageValue.length ? "gray" : "white"}
-        />
+        {renderActionIcon()}
       </SendIconContainer>
     </InputContainer>
   );

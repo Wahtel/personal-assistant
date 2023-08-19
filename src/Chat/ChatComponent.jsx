@@ -4,7 +4,7 @@ import { Messages, SendMessage, Menu } from "./components";
 
 const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: black;
+  background-color: #0A0C0B;
 `;
 
 export const ChatComponent = props => {

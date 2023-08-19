@@ -8,31 +8,31 @@ export const chatSlice = createSlice({
     error: null,
     messages: [
       { type: "user", message: "Hello" },
-      { type: "chat", message: "Hello" },
+      { type: "assistant", message: "Hello" },
       { type: "user", message: "Hello" },
-      { type: "chat", message: "Hello" },
+      { type: "assistant", message: "Hello" },
       { type: "user", message: "Hello" },
       {
-        type: "chat",
+        type: "assistant",
         message:
           "Very Very Very Very Very Very Very Very long hello Very Very Very Very Very Very Very Very long helloVery Very Very Very Very Very Very Very long helloVery Very Very Very Very Very Very Very long helloVery Very Very Very Very Very Very Very long helloVery Very Very Very Very Very Very Very long helloVery Very Very Very Very Very Very Very long helloVery Very Very Very Very Very Very Very long helloVery Very Very Very Very Very Very Very long helloVery Very Very Very Very Very Very Very long hello",
       },
       { type: "user", message: "Hello" },
-      { type: "chat", message: "Hello" },
+      { type: "assistant", message: "Hello" },
       { type: "user", message: "Hello" },
-      { type: "chat", message: "Hello" },
+      { type: "assistant", message: "Hello" },
       { type: "user", message: "Hello" },
       {
-        type: "chat",
+        type: "assistant",
         message: "Very Very Very Very Very Very Very Very long hello",
       },
       { type: "user", message: "Hello" },
-      { type: "chat", message: "Hello" },
+      { type: "assistant", message: "Hello" },
       { type: "user", message: "Hello" },
-      { type: "chat", message: "Hello" },
+      { type: "assistant", message: "Hello" },
       { type: "user", message: "Hello" },
       {
-        type: "chat",
+        type: "assistant",
         message: "Very Very Very Very Very Very Very Very long hello",
       },
     ],
@@ -51,7 +51,7 @@ export const chatSlice = createSlice({
       state.messages = [
         ...state.messages,
         { type: "user", message: payload["transcription"] },
-        { type: "chat", message: payload["gpt-completion"] },
+        { type: "assistant", message: payload["gpt-completion"] },
       ];
     },
     fetchResponseFailure: (state, action) => {

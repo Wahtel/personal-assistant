@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useRef, useEffect } from "react";
 import styled from "@emotion/native";
-import { View, KeyboardAvoidingView, Platform } from "react-native";
+import { KeyboardAvoidingView, Platform } from "react-native";
 import { Audio } from "expo-av";
 import { Keyboard } from "react-native";
 import { Input, RecorderView } from "./components";
@@ -22,6 +22,7 @@ export const SendMessage = (props) => {
   const recordingRef = useRef(null);
   const [isRecording, setIsRecording] = useState(false);
   const [audioURI, setAudioURI] = useState(null);
+  const [communicationState, setCommunicationState] = useState("message");
 
   useEffect(() => {
     return async () => {
@@ -41,6 +42,11 @@ export const SendMessage = (props) => {
       /> */}
     </Fragment>
   );
+
+  const toggleCommunicationState = () => {
+    const newState = communicationState === "message" ? "audio" : "message";
+    setCommunicationState(newState);
+  };
 
   const startRecording = async () => {
     Keyboard.dismiss();
@@ -92,6 +98,8 @@ export const SendMessage = (props) => {
           startRecording={startRecording}
           stopRecording={stopRecording}
           fetching={fetching}
+          toggleCommunicationState={toggleCommunicationState}
+          communicationState={communicationState}
         />
       </StyledKeyboardAvoidingView>
       {isRecording && <RecorderView stopRecording={stopRecording} />}
