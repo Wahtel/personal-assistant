@@ -3,7 +3,8 @@ import styled from "@emotion/native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { SpinnerIcon } from "../SpinnerIcon";
-import { SendMessageIcon, RecordAudioIcon } from "../../components";
+import { SendMessageIcon } from "../SendMessageIcon";
+import { RecordAudioIcon } from "../RecordAudioIcon";
 
 const InputContainer = styled.View`
   margin-left: 15px;
