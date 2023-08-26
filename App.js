@@ -33,7 +33,7 @@ export default function App() {
   }
 
   return (
-    <Provider store={store}>
+    <Provider store={store} style={{ backgroundColor: "red" }}>
       <AppRouter />
     </Provider>
   );

@@ -1,7 +1,7 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import axios from "axios";
 import { fetchResponse, fetchResponseSuccess, fetchResponseFailure } from "./reducer";
-import { readFileAsBase64 } from "../utils";
+import { readFileAsBase64 } from "../../utils";
 
 function* sendFile(file) {
   const splittedFile = file.split(".");

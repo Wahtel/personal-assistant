@@ -127,7 +127,7 @@ export const SignupForm = ({ toggleForm, navigation }) => {
         </View>
       </FormContainer>
       <ButtonContainer>
-        <Button onPress={() => navigation.navigate("Chat")}>
+        <Button onPress={() => navigation.navigate("Core")}>
           <ButtonText>Sign up</ButtonText>
         </Button>
         <SignInContainer>

@@ -14,8 +14,9 @@ const Container = styled.View`
 
 const FormContainer = styled.View`
   width: 100%;
-  height: 300px;
-  padding-horizontal: 30px;
+  // height: 250px;
+  padding-horizontal: 10px;
+  // background-color: green;
 `;
 
 const Title = styled.Text`
@@ -50,11 +51,13 @@ const HighlightedText = styled.Text`
 `;
 
 const ButtonContainer = styled.View`
-  position: absolute;
-  bottom: 0;
-  height: 150px;
+  // position: absolute;
+  // bottom: 0;
+  // height: 150px;
   width: 100%;
   display: flex;
+  // background-color: red;
+  margin-top: 30px;
 `;
 
 const Input = styled.TextInput`
@@ -89,7 +92,7 @@ const ButtonText = styled.Text`
   font-size: 18px;
 `;
 
-const SignInContainer = styled.View`
+const SignUpContainer = styled.View`
   margin-top: 21px;
 `;
 
@@ -124,17 +127,17 @@ export const LoginForm = ({ toggleForm, navigation }) => {
         </View>
       </FormContainer>
       <ButtonContainer>
-        <Button onPress={() => navigation.navigate("Chat")}>
+        <Button onPress={() => navigation.navigate("Core")}>
           <ButtonText>Sign in</ButtonText>
         </Button>
-        <SignInContainer>
+        <SignUpContainer>
           <StyledText>
             Already registered?{" "}
             <HighlightedText onPress={toggleForm}>
-              Sign In
+              Sign Up
             </HighlightedText>
           </StyledText>
-        </SignInContainer>
+        </SignUpContainer>
       </ButtonContainer>
     </Container>
   );
