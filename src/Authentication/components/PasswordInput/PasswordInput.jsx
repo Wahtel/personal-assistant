@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/native";
-import { HideIcon } from "../HideIcon";
+import { HidePasswordIcon } from "../HidePasswordIcon";
+import { ShowPasswordIcon } from "../ShowPasswordIcon";
 
 const Container = styled.View`
   flex-direction: row;
@@ -8,21 +9,21 @@ const Container = styled.View`
 `;
 
 const Input = styled.TextInput`
-  border-width: 1px;
-  border-color: #5e5e5e;
-  border-radius: 15px;
-  padding: 12px;
-  padding-left: 23px;
-  margin-bottom: 8px;
+  border-radius: 0px 0px 14px 14px;
+  padding: 12px 16px 12px 16px;
+  // margin-bottom: 8px;
+  background-color: #202020;
+  height: 48px;
   width: 100%;
   color: #ffffff;
+  font-family: "SF-Pro-Text-Regular";
 `;
 
 const IconContainer = styled.TouchableOpacity`
   position: absolute;
   right: 29px;
   top: 0;
-  bottom: 8px;
+  bottom: 0;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -31,7 +32,7 @@ const IconContainer = styled.TouchableOpacity`
   // background-color: blue;
 `;
 
-const StyledIcon = styled(HideIcon)`
+const StyledIcon = styled(HidePasswordIcon)`
   position: absolute;
   right: 29px;
   top: 0;
@@ -52,13 +53,13 @@ export const PasswordInput = (props) => {
       <Input
         placeholder={placeholder}
         secureTextEntry={isHidden}
-        placeholderTextColor="#CCCCCC"
+        placeholderTextColor="#FFFFFF"
         autoCapitalize="none"
         // onChangeText={onChangeText}
         // value={value}
       />
-      <IconContainer onPress={toggleIsHidden}>
-        <HideIcon />
+      <IconContainer onPress={toggleIsHidden} activeOpacity={1}>
+        {isHidden ? <HidePasswordIcon /> : <ShowPasswordIcon />}
       </IconContainer>
     </Container>
   );

@@ -42,7 +42,7 @@ const LogoText = styled.Text`
 const NameLabel = styled.Text`
   color: #c6c6c6;
   font-size: 15px;
-  font-family: "Inter-Regular";
+  // font-family: "Inter-Regular";
   // text-transform: uppercase;
   margin-left: 10px;
 `;
@@ -56,7 +56,7 @@ const Message = styled.Text`
   margin-left: 5px;
   margin-top: 10px;
   font-size: 14px;
-  font-family: "Inter-Regular";
+  // font-family: "Inter-Regular";
 `;
 
 export const Messages = (props) => {
