@@ -10,7 +10,7 @@ const Container = styled.SafeAreaView`
 
 const Content = styled.View`
   padding: 40px 0 0px 20px;
-  background-color: green;
+  // background-color: green;
   flex: 1;
   position: relative;
 `;
@@ -38,7 +38,7 @@ const ButtonContainer = styled.View`
   right: 0;
   margin: auto;
   display: flex;
-  background-color: red;
+  // background-color: red;
   align-self: center;
 `;
 
@@ -59,7 +59,7 @@ export const AuthenticationComponent = ({ navigation }) => {
 
   return (
     <Container>
-      <Content>
+      {/* <Content>
         <Title>Welcome to Personal Assistant</Title>
         <SubTitle>
           Crafted for You, Powered by AI: Experience the future of personal
@@ -68,7 +68,8 @@ export const AuthenticationComponent = ({ navigation }) => {
       </Content>
       <ButtonContainer>
 
-      </ButtonContainer>
+      </ButtonContainer> */}
+      {renderForm()}
     </Container>
   );
 };
