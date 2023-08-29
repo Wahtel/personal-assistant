@@ -26,7 +26,7 @@ const StyledMenu = styled(Menu)`
 `;
 
 export const MenuComponent = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const openMenu = () => {
     setVisible(true);
