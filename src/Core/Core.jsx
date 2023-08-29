@@ -2,6 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { Chat } from "./Chat";
+import { Settings } from "./Settings";
 import { TabNavigator } from "./TabNavigator";
 
 const Tab = createBottomTabNavigator();
@@ -16,7 +17,7 @@ export const Core = () => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-          if (route.name === "Chat") {
+          if (route.name.includes("Chat")) {
             iconName = focused ? "home" : "home-outline";
           } else if (route.name === "Settings") {
             iconName = focused ? "settings" : "settings-outline";
@@ -29,20 +30,24 @@ export const Core = () => {
           backgroundColor: "#151515", // set background color
           borderTopRightRadius: 30, // top right corner
           borderTopLeftRadius: 30, // top left corner
-          // if you want to set border for the tab bar
           borderTopWidth: 0,
           borderColor: "grey",
+          // padding: "14px 49px 34px 49px",
           marginTop: 16,
+          // paddingTop: 16,
         },
-        // tabBarItemStyle:{
+        tabBarItemStyle:{
         // backgroundColor:'#00ff00',
         // margin:5,
         // borderRadius:10,
-        // }
+        // flex: 1,
+        // alignItems: 'center',
+        // padding: "14px 49px 34px 49px",
+        }
       })}
     >
       <Tab.Screen name="Chat" component={Chat} />
-      {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
+      <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );
 };
