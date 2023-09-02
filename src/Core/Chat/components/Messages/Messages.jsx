@@ -1,10 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import styled from "@emotion/native";
 import { ScrollView } from "react-native";
+import { AssistantIcon } from "./components/AssistantIcon";
+import { AssistantMessage } from "./components/AssistantMessage";
+import { UserMessage } from "./components/UserMessage";
+import { render } from "react-native-web/dist/cjs/exports/render";
 
 const MessageContainer = styled.View`
-  // background-color: ${({ type }) =>
-    type === "chat" ? "#434654" : "#343541"};
   display: flex;
   border-top-color: rgba(32, 33, 35, 0);
   margin: auto;
@@ -25,39 +27,28 @@ const LogoWrapper = styled.View`
 `;
 
 const Logo = styled.View`
-  width: 30px;
-  height: 30px;
-  background-color: ${({ type }) => (type === "assistant" ? "#21BF73" : "#3299DA")};
-  border-radius: 11px;
+  width: 26px;
+  height: 26px;
+  background-color: ${({ type }) => (type === "assistant" ? "#0B6AC9" : "#BF5AF2")};
+  border-radius: 50%;
   align-items: center;
   display: flex;
   justify-content: center;
 `;
 
 const LogoText = styled.Text`
-  color: #fff;
-  font-size: 8px;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-family: "SF-Pro-Text-Medium";
 `;
 
 const NameLabel = styled.Text`
-  color: #c6c6c6;
+  color: #555555;
   font-size: 15px;
-  // font-family: "Inter-Regular";
-  // text-transform: uppercase;
+  font-family: "SF-Pro-Text-Medium";
   margin-left: 10px;
 `;
 
-const Message = styled.Text`
-  // color: #ffffff;
-  color: #949494;
-  display: flex;
-  flex-direction: column;
-  max-width: 100%;
-  margin-left: 5px;
-  margin-top: 10px;
-  font-size: 14px;
-  // font-family: "Inter-Regular";
-`;
 
 export const Messages = (props) => {
   const { messages } = props;
@@ -73,19 +64,32 @@ export const Messages = (props) => {
     };
   }, [messages]);
 
+  const renderLogo = type => {
+    if (type === "user") {
+      return <LogoText>IW</LogoText>;
+    }
+    return <AssistantIcon />;
+  }
+
+  const renderMessage = ({ type, message }) => {
+    if (type === "user") {
+      return <UserMessage message={message} />;
+    }
+    return <AssistantMessage message={message} />;
+  };
+
   const renderMessages = () => {
     return messages.map((message, index) => {
-      const logoText = "IW";
       const isUser = message.type === "user";
       return (
         <MessageContainer type={message.type} index={index} key={index}>
           <LogoWrapper>
             <Logo type={message.type}>
-              {isUser && <LogoText>{logoText}</LogoText>}
+              {renderLogo(message.type)}
             </Logo>
-            <NameLabel>{isUser ? "Paul" : "P.A."}</NameLabel>
+            <NameLabel>{isUser ? "Paul" : "Personal Assistant"}</NameLabel>
           </LogoWrapper>
-          <Message>{message.message}</Message>
+          {renderMessage(message)}
         </MessageContainer>
       );
     });

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AppRouter } from "./src/router";
+import { EventProvider } from 'react-native-outside-press';
 import store from "./src/store";
 import { Provider } from "react-redux";
 import * as Font from "expo-font";
@@ -34,7 +35,9 @@ export default function App() {
 
   return (
     <Provider store={store} style={{ backgroundColor: "red" }}>
-      <AppRouter />
+      <EventProvider>
+        <AppRouter />
+      </EventProvider>
     </Provider>
   );
 }

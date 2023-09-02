@@ -4,7 +4,7 @@ import { Messages, SendMessage, Menu } from "./components";
 
 const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: #0A0C0B;
+  background-color: #000000;
 `;
 
 export const ChatComponent = props => {
@@ -16,7 +16,7 @@ export const ChatComponent = props => {
 
   return (
     <Container>
-      <Menu />
+      {/* <Menu /> */}
       <Messages messages={messages} />
       <SendMessage sendFile={props.sendFile} fetching={fetching} />
     </Container>

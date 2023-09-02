@@ -34,6 +34,7 @@ export const Core = () => {
           borderColor: "grey",
           // padding: "14px 49px 34px 49px",
           marginTop: 16,
+          // position: 'absolute',
           // paddingTop: 16,
         },
         tabBarItemStyle:{

@@ -1,1 +1,0 @@
-export { SpinnerIcon } from "./SpinnerIcon";

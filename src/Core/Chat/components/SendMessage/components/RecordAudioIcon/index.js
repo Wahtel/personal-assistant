@@ -1,1 +1,0 @@
-export { RecordAudioIcon } from "./RecordAudioIcon";

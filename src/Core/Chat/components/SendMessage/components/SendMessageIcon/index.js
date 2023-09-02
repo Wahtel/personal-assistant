@@ -1,1 +1,0 @@
-export { SendMessageIcon } from "./SendMessageIcon";
