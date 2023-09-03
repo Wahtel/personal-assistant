@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import styled from "@emotion/native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
-import { SpinnerIcon } from "./SpinnerIcon";
-import { SendMessageIcon } from "./SendMessageIcon";
-import { RecordAudioIcon } from "./RecordAudioIcon";
-import { TrashIcon } from "./TrashIcon";
+import {
+  SpinnerIcon,
+  SendMessageIcon,
+  RecordAudioIcon,
+  TrashIcon,
+  ClearIcon,
+} from "./icons";
 import { Menu } from "../../../Menu/";
 
 const InputContainer = styled.View`
@@ -33,12 +36,18 @@ const InputWrapper = styled.View`
 
 const IconContainer = styled.TouchableOpacity`
   position: absolute;
-  right: 16px;
+  right: 0;
   top: 0;
   bottom: 0;
   margin: auto;
   justify-content: center;
   // background-color: pink;
+  width: 45px;
+`;
+
+const IconPositioning = styled.View`
+  position: absolute;
+  right: 16px;
 `;
 
 const ActionIconContainer = styled.TouchableOpacity`
@@ -81,9 +90,25 @@ export const Input = (props) => {
   } = props;
   const [messageValue, setMessageValue] = useState("");
 
-  console.log(communicationState, "communicationState");
+  const clearState = () => {
+    setMessageValue("");
+  };
+
+  const iconPressHandler = () => {
+    if (isRecording) {
+      stopRecording();
+    } else if (messageValue.length) {
+      clearState();
+    } else {
+      startRecording();
+    }
+  };
 
   const renderIcon = () => {
+    console.log(messageValue.length, "messageValue.length");
+    if (messageValue.length) {
+      return <ClearIcon />;
+    }
     if (isRecording) {
       return <TrashIcon />;
     }
@@ -102,8 +127,6 @@ export const Input = (props) => {
     return <SendMessageIcon isEmpty={!messageValue.length} />;
   };
 
-  console.log(!messageValue.length, "!messageValue.length");
-
   return (
     <InputContainer>
       <View>
@@ -119,11 +142,9 @@ export const Input = (props) => {
           keyboardAppearance="dark"
           editable={!isRecording}
         />
-        {!messageValue && (
-          <IconContainer onPress={isRecording ? stopRecording : startRecording}>
-            {renderIcon()}
-          </IconContainer>
-        )}
+        <IconContainer onPress={iconPressHandler}>
+          <IconPositioning>{renderIcon()}</IconPositioning>
+        </IconContainer>
       </InputWrapper>
       <ActionIconContainer onPress={toggleCommunicationState} activeOpacity={1}>
         {renderActionIcon()}
