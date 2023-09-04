@@ -1,7 +1,7 @@
 import React from "react";
 import Svg, { Path, Circle } from "react-native-svg";
 
-export const AssistantIcon = () => {
+export const AssistantLogo = () => {
   return (
     <Svg
       width="22"

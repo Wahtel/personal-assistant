@@ -6,10 +6,11 @@ import { Keyboard } from "react-native";
 import { Input, RecorderView } from "./components";
 
 const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView)`
-  flex: 1;
+  // flex: 1;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
+  // background-color: green;
 `;
 
 const StyledText = styled.Text`

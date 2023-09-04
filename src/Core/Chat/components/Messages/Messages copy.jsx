@@ -1,13 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import styled from "@emotion/native";
 import { ScrollView } from "react-native";
-import {
-  PersonalAssistantIcon,
-  AssistantLogo,
-  AssistantMessage,
-  UserMessage,
-  PromptSuggestion,
-} from "./components";
+import { PersonalAssistantIcon } from "./components/PersonalAssistantIcon";
+import { AssistantLogo } from "./components/AssistantLogo";
+import { AssistantMessage } from "./components/AssistantMessage";
+import { UserMessage } from "./components/UserMessage";
+import { PromptSuggestion } from "./components/PromptSuggestion";
 
 const MessageContainer = styled.View`
   display: flex;
@@ -19,10 +17,6 @@ const MessageContainer = styled.View`
   z-index: 1;
   flex-direction: column;
   // align-items: center;
-`;
-
-const PromptsContainer = styled.View`
-  margin-bottom: 8px;
 `;
 
 const EmptyStateContainer = styled.View`
@@ -122,29 +116,21 @@ export const Messages = (props) => {
     });
   };
 
-  const renderPrompts = () => {
+  const renderChat = () => {
     return (
-      <PromptsContainer>
-        <PromptSuggestion
-          title="How to manage Instagram"
-          description="top tips for a beginner"
-        />
-        <PromptSuggestion
-          title="How to concentrate on business"
-          description="what should I do for this"
-        />
-      </PromptsContainer>
+      <ScrollView contentContainerStyle={{ paddingBottom: 36 }} ref={ref}>
+        {renderMessages()}
+      </ScrollView>
     );
   };
 
   return (
     <ScrollView
       style={{ flex: 1 }}
-      contentContainerStyle={{ paddingBottom: 0, flexGrow: 1 }}
+      contentContainerStyle={{ paddingBottom: 36, flexGrow: 1  }}
       ref={ref}
     >
       {messages.length ? renderMessages() : renderEmptyState()}
-      {!messages.length && renderPrompts()}
     </ScrollView>
   );
 };
