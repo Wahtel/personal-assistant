@@ -1,53 +1,50 @@
-import { View, TouchableOpacity, StyleSheet, Text } from 'react-native';
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { ChatIcon, SettingsIcon, TasksIcon, HistoryIcon } from "./icons";
 
-export const TabNavigator = ({ state, descriptors, navigation }) => {
+const Tab = createBottomTabNavigator();
+
+const tabBarStyle = {
+  height: 89, // adjust height
+  backgroundColor: "#151515", // set background color
+  borderTopRightRadius: 30, // top right corner
+  borderTopLeftRadius: 30, // top left corner
+  borderTopWidth: 0,
+  borderColor: "grey",
+  marginTop: 16,
+};
+
+const activeTintColor = "#0C7BEB";
+const inactiveTintColor = "#5F5F5F";
+
+export const TabNavigator = ({ components }) => {
   return (
-    <View style={styles.tabContainer}>
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
-
-        const isFocused = state.index === index;
-
-        const onPress = () => {
-          if (!isFocused) {
-            navigation.navigate(route.name);
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        activeTintColor,
+        inactiveTintColor,
+        tabBarIcon: ({ focused, color, size }) => {
+          if (route.name === "Chat") {
+            return <ChatIcon color={color} />;
+          } else if (route.name === "Settings") {
+            return <SettingsIcon color={color} />;
+          } else if (route.name === "Tasks") {
+            return <TasksIcon color={color} />;
           }
-        };
 
-        return (
-          <TouchableOpacity
-            key={index}
-            onPress={onPress}
-            style={styles.tabButton}
-          >
-            {/* Use your icon rendering logic here */}
-            <Text>{label}</Text>
-          </TouchableOpacity>
-        );
+          return <HistoryIcon color={color} />;
+        },
+        tabBarStyle,
       })}
-    </View>
+    >
+      {components.map((component) => (
+        <Tab.Screen
+          key={component.name}
+          name={component.name}
+          component={component.component}
+        />
+      ))}
+    </Tab.Navigator>
   );
-}
-
-const styles = StyleSheet.create({
-  tabContainer: {
-    flexDirection: 'row',
-    height: 89,
-    backgroundColor: 'lightblue',
-    borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
-    borderTopWidth: 2,
-    borderColor: 'grey',
-  },
-  tabButton: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
+};

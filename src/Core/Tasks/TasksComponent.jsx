@@ -10,10 +10,10 @@ const Text = styled.Text`
   color: #ffffff;
 `;
 
-export const SettingsComponent = () => {
+export const TasksComponent = () => {
   return (
     <Container>
-      <Text>SettingsComponent</Text>
+      <Text>TasksComponent</Text>
     </Container>
   );
 };
