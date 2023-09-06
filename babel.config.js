@@ -4,6 +4,14 @@ module.exports = function(api) {
     presets: ['babel-preset-expo'],
     plugins: [
       'react-native-paper/babel',
+      [
+        'module-resolver',
+        {
+          alias: {
+            src: './src',
+          },
+        },
+      ],
     ],
   };
 };

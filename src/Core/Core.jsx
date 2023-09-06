@@ -9,8 +9,8 @@ export const Core = () => {
   return (
     <TabNavigator
       components={[
-        { name: "Chat", component: ChatNavigator },
         { name: "Tasks", component: Tasks },
+        { name: "Chat", component: ChatNavigator },
         { name: "History", component: History },
         { name: "Settings", component: Settings },
       ]}
