@@ -8,7 +8,7 @@ import {
   RecordAudioIcon,
   TrashIcon,
   ClearIcon,
-} from "./icons";
+} from "src/ui/icons";
 import { Menu } from "../../../Menu/";
 
 const InputContainer = styled.View`

@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { ChatIcon, SettingsIcon, TasksIcon, HistoryIcon } from "./icons";
+import { ChatIcon, SettingsIcon, TasksIcon, HistoryIcon } from "src/ui/icons";
 
 const Tab = createBottomTabNavigator();
 

@@ -3,7 +3,7 @@ import styled from "@emotion/native";
 import { SafeAreaView, Animated } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import OutsidePressHandler from "react-native-outside-press";
-import { PlusIcon } from "./PlusIcon";
+import { PlusIcon } from "src/ui/icons/PlusIcon";
 import { MenuItem } from "./MenuItem";
 
 const MenuContainer = styled.TouchableOpacity`

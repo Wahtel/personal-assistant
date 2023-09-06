@@ -1,1 +1,15 @@
 export { ArrowIcon } from "./ArrowIcon";
+export { AssistantLogo } from "./AssistantLogo";
+export { PersonalAssistantIcon } from "./PersonalAssistantIcon";
+export { ChatIcon } from "./ChatIcon";
+export { SettingsIcon } from "./SettingsIcon";
+export { TasksIcon } from "./TasksIcon";
+export { HistoryIcon } from "./HistoryIcon";
+export { PlusIcon } from "./PlusIcon";
+export { SpinnerIcon } from "./SpinnerIcon";
+export { SendMessageIcon } from "./SendMessageIcon";
+export { RecordAudioIcon } from "./RecordAudioIcon";
+export { TrashIcon } from "./TrashIcon";
+export { ClearIcon } from "./ClearIcon";
+export { HidePasswordIcon } from "./HidePasswordIcon";
+export { ShowPasswordIcon } from "./ShowPasswordIcon";

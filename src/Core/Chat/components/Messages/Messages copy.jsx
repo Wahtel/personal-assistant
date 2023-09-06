@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import styled from "@emotion/native";
 import { ScrollView } from "react-native";
 import { PersonalAssistantIcon } from "./components/PersonalAssistantIcon";
-import { AssistantLogo } from "./components/AssistantLogo";
+import { AssistantLogo } from "../../../../ui/icons/AssistantLogo";
 import { AssistantMessage } from "./components/AssistantMessage";
 import { UserMessage } from "./components/UserMessage";
 import { PromptSuggestion } from "./components/PromptSuggestion";

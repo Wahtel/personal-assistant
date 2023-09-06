@@ -1,9 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import styled from "@emotion/native";
 import { ScrollView } from "react-native";
+import { PersonalAssistantIcon, AssistantLogo } from "src/ui/icons";
 import {
-  PersonalAssistantIcon,
-  AssistantLogo,
   AssistantMessage,
   UserMessage,
   PromptSuggestion,

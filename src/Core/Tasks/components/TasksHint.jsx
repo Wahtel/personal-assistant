@@ -1,7 +1,7 @@
 import React from "react";
 import { Text } from "react-native";
 import styled from "@emotion/native";
-import { ClearIcon } from "src/Core/Chat/components/SendMessage/components/Input/icons/ClearIcon";
+import { ClearIcon } from "src/ui/icons/ClearIcon";
 
 const Container = styled.View`
   width: 350px;

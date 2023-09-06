@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/native";
-import { HidePasswordIcon } from "../HidePasswordIcon";
-import { ShowPasswordIcon } from "../ShowPasswordIcon";
+import { HidePasswordIcon, ShowPasswordIcon } from "src/ui/icons";
 
 const Container = styled.View`
   flex-direction: row;
