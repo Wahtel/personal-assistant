@@ -1,11 +1,15 @@
 import React from "react";
 import styled from "@emotion/native";
+import { FlatList } from "react-native";
 import { Task } from "./Task/Task";
 
 const Container = styled.View`
   display: flex;
   margin-top: 14px;
-  margin-left: 20px;
+  // margin-left: 20px;
+  // border: 1px solid #ffffff;
+  // width: 350px;
+  margin: 10px auto;
 `;
 
 const TitleWrapper = styled.View`
@@ -14,6 +18,7 @@ const TitleWrapper = styled.View`
   flex-direction: column;
   justify-content: center;
   margin-bottom: 7px;
+  margin-left: 13px;
 `;
 
 const Title = styled.Text`
@@ -22,8 +27,14 @@ const Title = styled.Text`
   font-family: "SF-Pro-Text-Semibold";
 `;
 
-export const Categories = ({ tasks }) => {
+const Tasks = styled.View`
+  display: flex;
+  flexDirection: row;
+  flexWrap: wrap;
+  // background-color: red;
+`;
 
+export const Categories = ({ tasks, title }) => {
   const renderTasks = () => {
     return tasks.map((task) => {
       return <Task key={task.id} task={task} />;
@@ -33,9 +44,17 @@ export const Categories = ({ tasks }) => {
   return (
     <Container>
       <TitleWrapper>
-        <Title>Suggested</Title>
+        <Title>{title}</Title>
       </TitleWrapper>
-      {renderTasks()}
+      <Tasks>
+        {renderTasks()}
+      {/* <FlatList
+        data={tasks}
+        renderItem={({ item }) => <Task task={item} />}
+        keyExtractor={(item) => item.id}
+        numColumns={2} // for a 2-column grid
+      /> */}
+      </Tasks>
     </Container>
   );
 };

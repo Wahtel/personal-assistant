@@ -6,9 +6,20 @@ const StyledImage = styled.Image`
   height: 28px;
 `;
 
+// we need to build all logos as svg components
+
 const images = {
   facebook: {
-    uri: require('./images/facebookLogo.png'),
+    uri: require('./images/facebook-logo.png'),
+  },
+  instagram: {
+    uri: require('./images/instagram-logo.png'),
+  },
+  x: {
+    uri: require('./images/x-logo.png'),
+  },
+  tiktok: {
+    uri: require('./images/tik-tok-logo.png'),
   },
 };
 

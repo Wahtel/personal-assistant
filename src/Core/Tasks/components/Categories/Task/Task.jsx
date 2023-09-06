@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "@emotion/native";
-import { ImageRenderer } from "./ImageRenderer";
+import { StyleSheet } from "react-native";
 import { ArrowIcon } from "src/ui/icons";
+import { LinearGradient } from 'expo-linear-gradient';
+import { ImageRenderer } from "./ImageRenderer";
 
 const Container = styled.View`
   display: flex;
@@ -11,8 +13,16 @@ const Container = styled.View`
   padding: 16px 13px 18px 13px;
   gap: 4px;
   background-color: #1C1C1E;
-  // background: linear-gradient(0deg, #1C1C1E, #1C1C1E),
-  //   radial-gradient(86.1% 163.44% at 94.62% 97.56%, rgba(137, 89, 199, 0.2) 0%, rgba(0, 0, 0, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  position: relative;
+  margin: 10px;
+`;
+
+const StyledView = styled.View`
+  flex: 1;
+  // Adjust this based on your layout needs:
+  width: 100%;
+  height: 100%;
+  position: relative;
 `;
 
 const TitleContainer = styled.View`
@@ -55,11 +65,17 @@ const StyledIcon = styled(ArrowIcon)`
 `;
 
 export const Task = ({ task }) => {
-  const { title, description } = task;
+  const { title, description, icon } = task;
   return (
     <Container>
+      {/* <LinearGradient
+        colors={['#8959C733', 'transparent']}
+        style={styles.container}
+        start={{ x: 1, y: 1 }}
+        end={{ x: 0.1, y: 0.3 }}
+      /> */}
       <TitleContainer>
-        <ImageRenderer name={"facebook"} />
+        <ImageRenderer name={icon} />
         <Title>{title}</Title>
       </TitleContainer>
       <DescriptionContainer>
@@ -69,3 +85,18 @@ export const Task = ({ task }) => {
     </Container>
   );
 };
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderRadius: 12,
+  },
+});
