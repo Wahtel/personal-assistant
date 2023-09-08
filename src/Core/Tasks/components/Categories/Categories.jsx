@@ -48,12 +48,6 @@ export const Categories = ({ tasks, title }) => {
       </TitleWrapper>
       <Tasks>
         {renderTasks()}
-      {/* <FlatList
-        data={tasks}
-        renderItem={({ item }) => <Task task={item} />}
-        keyExtractor={(item) => item.id}
-        numColumns={2} // for a 2-column grid
-      /> */}
       </Tasks>
     </Container>
   );
