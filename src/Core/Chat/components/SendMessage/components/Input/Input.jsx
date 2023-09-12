@@ -67,7 +67,6 @@ const StyledInput = styled.TextInput`
   color: #aeaeb2;
   font-family: "SF-Pro-Text-Regular";
   font-size: 15px;
-  // ${({ isRecording }) => isRecording && "border: 1px solid #3f37c9;"}
 `;
 
 const View = styled.View`
@@ -119,14 +118,6 @@ export const Input = (props) => {
     return <RecordAudioIcon />;
   };
 
-  const renderActionIcon = () => {
-    // if (communicationState === "audio") {
-    //   return <RecordAudioIcon />;
-    // }
-
-    return <SendMessageIcon isEmpty={!messageValue.length} />;
-  };
-
   return (
     <InputContainer>
       <View>
@@ -136,6 +127,7 @@ export const Input = (props) => {
         <StyledInput
           placeholder="Message"
           placeholderTextColor="#dedede"
+          selectionColor="#FF9F0A"
           onChange={(e) => setMessageValue(e.nativeEvent.text)}
           value={messageValue}
           isRecording={isRecording}
@@ -147,7 +139,7 @@ export const Input = (props) => {
         </IconContainer>
       </InputWrapper>
       <ActionIconContainer onPress={toggleCommunicationState} activeOpacity={1}>
-        {renderActionIcon()}
+        <SendMessageIcon isEmpty={!messageValue.length && !isRecording} />
       </ActionIconContainer>
     </InputContainer>
   );

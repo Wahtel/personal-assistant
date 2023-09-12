@@ -3,7 +3,7 @@ import styled from "@emotion/native";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { Audio } from "expo-av";
 import { Keyboard } from "react-native";
-import { Input, RecorderView } from "./components";
+import { Input } from "./components";
 
 const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView)`
   // flex: 1;
@@ -103,7 +103,6 @@ export const SendMessage = (props) => {
           communicationState={communicationState}
         />
       </StyledKeyboardAvoidingView>
-      {isRecording && <RecorderView stopRecording={stopRecording} />}
     </Fragment>
   );
 };
