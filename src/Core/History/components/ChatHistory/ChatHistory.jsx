@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/native";
-import { ImageRenderer } from "src/Core/Tasks/components/Categories/Task/ImageRenderer";
+import { LogoRenderer } from "src/Core/Tasks/components/Categories/Task/LogoRenderer";
 
 const Container = styled.SafeAreaView`
   // flex: 1;
@@ -55,7 +55,7 @@ export const ChatHistory = () => {
   return (
     <Container>
      <IconContainer>
-      <ImageRenderer name="instagram" />
+      <LogoRenderer name="instagram" />
      </IconContainer>
      <DataContainer>
       <Title>Instagram posts NG</Title>

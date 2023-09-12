@@ -3,7 +3,7 @@ import styled from "@emotion/native";
 import { StyleSheet } from "react-native";
 import { ArrowIcon } from "src/ui/icons";
 import { LinearGradient } from 'expo-linear-gradient';
-import { ImageRenderer } from "./ImageRenderer";
+import { LogoRenderer } from "./LogoRenderer";
 
 const Container = styled.View`
   display: flex;
@@ -75,7 +75,7 @@ export const Task = ({ task }) => {
         end={{ x: 0.1, y: 0.3 }}
       /> */}
       <TitleContainer>
-        <ImageRenderer name={icon} />
+        <LogoRenderer name={icon} />
         <Title>{title}</Title>
       </TitleContainer>
       <DescriptionContainer>
