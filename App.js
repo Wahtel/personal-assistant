@@ -34,7 +34,7 @@ export default function App() {
   }
 
   return (
-    <Provider store={store} style={{ backgroundColor: "red" }}>
+    <Provider store={store}>
       <EventProvider>
         <AppRouter />
       </EventProvider>
