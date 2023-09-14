@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/native";
-import { ScrollView } from "react-native";
-import { TasksHint, Categories } from "./components";
+import {ScrollView} from "react-native";
+import {TasksHint, Categories} from "./components";
 
 const Container = styled.SafeAreaView`
   flex: 1;
@@ -55,9 +55,10 @@ export const TasksComponent = () => {
   return (
     <Container>
       <ScrollView>
-        <TasksHint />
-        <Categories title="Recent" tasks={Tasks} />
-        <Categories title="Suggested" tasks={Tasks} />
+        <TasksHint icon='🥳' title='Welcome to Promts!'
+                   description='You can choose a topic to use the chat more conveniently'/>
+        <Categories title="Recent" tasks={Tasks}/>
+        <Categories title="Suggested" tasks={Tasks}/>
       </ScrollView>
     </Container>
   );
