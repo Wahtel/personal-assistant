@@ -1,12 +1,29 @@
 import React from 'react';
 import styled from '@emotion/native';
-import { Text, Alert } from 'react-native';
 import SettingsArrowIcon from './images/SettingsArrowIcon';
 
-export default function SettingsItem(props) {
-  const { hasArrowIcon, iconComponent, settingsItemTitle, settingsItemValue, style, isDisabled, onPress } = props;
+export default function PaAccordion(props) {
+  const {
+    hasArrowIcon,
+    iconComponent,
+    settingsItemTitle,
+    settingsItemValue,
+    style,
+    roundedBottom,
+    roundedTop,
+    isDisabled,
+    onPress
+  } = props;
   return (
-    <SettingsItemContainer style={{opacity: isDisabled ? 0.5 : 1}} onPress={onPress}>
+    <SettingsItemContainer
+      style={{
+        opacity: isDisabled ? 0.5 : 1,
+        borderTopLeftRadius: roundedTop ? 10 : 0,
+        borderTopRightRadius: roundedTop ? 10 : 0,
+        borderBottomLeftRadius: roundedBottom ? 10 : 0,
+        borderBottomRightRadius: roundedBottom ? 10 : 0
+      }}
+      onPress={onPress}>
       {iconComponent ? <SettingsIconContainer>
         {iconComponent}
       </SettingsIconContainer> : null}
@@ -26,7 +43,6 @@ const SettingsItemContainer = styled.TouchableOpacity`
   gap: 10px;
   padding: 10px 18px;
   background-color: #18181B;
-  border-radius: 10px;
 `;
 
 const SettingsIconContainer = styled.View`

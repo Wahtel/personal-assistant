@@ -13,7 +13,7 @@ export default function ModalUserTextInput(props) {
         placeholderTextColor='#EBEBF599'
         value={value}
         onChangeText={onChangeText}
-        style={inputStyles.input}
+        style={[inputStyles.input, {height: multiline ? 100: 'auto'}]}
       />
     </View>
   );
@@ -28,8 +28,8 @@ const inputStyles = StyleSheet.create({
   },
   input: {
     paddingTop: 0,
-    alignItems: 'center',
-    alignSelf: 'center',
+    alignItems: 'flex-start',
+    alignSelf: 'flex-start',
     fontSize: 16,
     color: '#ffffff'
   }
