@@ -11,7 +11,8 @@ import LockIcon from 'src/Core/Settings/images/LockIcon';
 import EnvelopeIcon from 'src/Core/Settings/images/EnvelopeIcon';
 import ExitIcon from 'src/Core/Settings/images/ExitIcon';
 
-export const SettingsComponent = () => {
+export default function SettingsScreen(props) {
+  const { navigation } = props;
   const [isUserNameModalOpen, setIsUserNameModalOpen] = useState(false);
   const [isSupportCenterModalOpen, setIsSupportCenterModalOpen] = useState(false);
   const [isDeleteAccountConfirmModalOpen, setIsDeleteAccountConfirmModalOpen] = useState(false);
@@ -45,7 +46,9 @@ export const SettingsComponent = () => {
         </SettingsBlockContainer>
 
         <SettingsBlockContainer>
-          <PaAccordion roundedTop settingsItemTitle='Terms of Use' />
+          <PaAccordion roundedTop settingsItemTitle='Terms of Use' onPress={() =>
+            navigation.navigate('TermsOfUseScreen')
+          } />
           <Divider width='95%' />
           <PaAccordion settingsItemTitle='Privacy Policy' />
           <Divider width='95%' />
