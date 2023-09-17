@@ -1,10 +1,14 @@
 import { StyleSheet, TextInput, View } from 'react-native';
 import React from 'react';
 
-export default function ModalUserTextInput({ placeholder, value, onChangeText }) {
+export default function ModalUserTextInput(props) {
+  const { placeholder, value, onChangeText, multiline } = props;
+
   return (
     <View style={inputStyles.container}>
       <TextInput
+        multiline={multiline}
+        numberOfLines={4}
         placeholder={placeholder}
         placeholderTextColor='#EBEBF599'
         value={value}
@@ -20,8 +24,12 @@ const inputStyles = StyleSheet.create({
     backgroundColor: '#7676803D',
     borderRadius: 8,
     paddingHorizontal: 16,
-    paddingVertical: 12},
+    paddingVertical: 12
+  },
   input: {
+    paddingTop: 0,
+    alignItems: 'center',
+    alignSelf: 'center',
     fontSize: 16,
     color: '#ffffff'
   }
