@@ -4,8 +4,7 @@ import styled from "@emotion/native";
 import { ClearIcon } from "src/ui/icons/ClearIcon";
 
 const Container = styled.View`
-  width: 350px;
-  height: 80px;
+  width: 90%;
   margin: 0 auto;
   padding: 10px 16px 10px 16px;
   border-radius: 14px;
@@ -27,7 +26,6 @@ const EmojiContainer = styled.View`
 
 const TextContainer = styled.View`
   flex: 1;
-  height: 60px;
   margin-left: 13px;
   // background-color: #FFFFFF1A;
 `;
@@ -52,16 +50,18 @@ const StyledIcon = styled(ClearIcon)`
   right: 13px;
 `;
 
-export const TasksHint = () => {
+export const TasksHint = (props) => {
+  const { icon, title, description } = props;
+
   return (
     <Container>
       <StyledIcon color="#5F5F5F" />
       <EmojiContainer>
-        <Text>🥳</Text>
+        <Text>{icon}</Text>
       </EmojiContainer>
       <TextContainer>
-        <Title>Welcome to Promts!</Title>
-        <Description>You can choose a topic to use the chat more conveniently</Description>
+        <Title>{title}</Title>
+        <Description>{description}</Description>
       </TextContainer>
     </Container>
   );
