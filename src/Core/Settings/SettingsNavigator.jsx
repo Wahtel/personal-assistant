@@ -5,7 +5,7 @@ import TermsOfUseScreen from './TermsOfUseScreen';
 
 const SettingsStack = createNativeStackNavigator();
 
-export default function ChatNavigator() {
+export default function SettingsNavigator() {
   return (
     <SettingsStack.Navigator screenOptions={{ headerShown: false }}>
       <SettingsStack.Screen name="SettingsMainScreen" component={SettingsScreen} />
