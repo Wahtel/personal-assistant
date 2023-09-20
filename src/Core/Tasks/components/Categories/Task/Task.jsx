@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "@emotion/native";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { ArrowIcon } from "src/ui/icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import { LogoRenderer } from "./LogoRenderer";
 
+const screenWidth = Dimensions.get('window').width;
+const itemWidth = (screenWidth / 2) - 20; // 50% of the screen width minus 20px for the margins
+
 const Container = styled.View`
   display: flex;
-  width: 170px;
+  width: ${itemWidth.toString()}px;
   height: 120px;
   border-radius: 12px;
   padding: 16px 13px 18px 13px;
@@ -67,7 +70,7 @@ const StyledIcon = styled(ArrowIcon)`
 export const Task = ({ task }) => {
   const { title, description, icon } = task;
   return (
-    <Container>
+    <Container itemWidth={itemWidth}>
       {/* <LinearGradient
         colors={['#8959C733', 'transparent']}
         style={styles.container}
