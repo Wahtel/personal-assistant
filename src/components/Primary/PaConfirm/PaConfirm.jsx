@@ -7,7 +7,7 @@ export default function PaConfirm(props) {
   const { modalVisible, setModalVisible, onConfirmPress, onRejectPress, confirmText } = props;
 
   return (
-    <PaModal modalVisible={modalVisible} setModalVisible={setModalVisible}>
+    <PaModal isCendered modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <View style={styles.modalMainContentWrapper}>
         <View style={styles.modalTextWrapper}>
           <Text style={styles.modalHeader}>Are you sure</Text>
