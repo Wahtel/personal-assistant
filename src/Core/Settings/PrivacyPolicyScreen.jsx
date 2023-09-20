@@ -3,15 +3,14 @@ import styled from '@emotion/native';
 
 import BackButton from "./components/BackButton/BackButton";
 
-
-export default function TermsOfUseScreen(props) {
+export default function PrivacyPolicyScreen(props) {
   const {navigation} = props;
 
   return (
     <Container>
       <BackButton onPress={() => navigation.goBack()}/>
-      <PageTitle>Terms of Use</PageTitle>
-      <TermsOfUseScreenContainer contentContainerStyle={{
+      <PageTitle>Privacy Policy</PageTitle>
+      <PrivacyPolicyScreenContainer contentContainerStyle={{
         rowGap: 20
       }}>
         <PageContentText>
@@ -53,8 +52,7 @@ export default function TermsOfUseScreen(props) {
           (d) Third Party Services. Any third party software, services, or other products you use in connection with the
           Services are subject to their own terms, and we are not responsible for third party products.
         </PageContentText>
-
-      </TermsOfUseScreenContainer>
+      </PrivacyPolicyScreenContainer>
     </Container>
   );
 };
@@ -66,7 +64,7 @@ const Container = styled.SafeAreaView`
   background-color: #0a0c0b;
 `;
 
-const TermsOfUseScreenContainer = styled.ScrollView`
+const PrivacyPolicyScreenContainer = styled.ScrollView`
   width: 90%;
   display: flex;
   flex-direction: column;
