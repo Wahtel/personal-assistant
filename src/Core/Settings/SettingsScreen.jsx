@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/native';
+import { LayoutAnimation } from 'react-native';
 
 import PaInputModal from '../../components/Primary/PaInputModal/PaInputModal';
 import PaAccordion from '../../components/Primary/PaAccordion/PaAccordion';
@@ -11,58 +12,76 @@ import LockIcon from 'src/Core/Settings/images/LockIcon';
 import EnvelopeIcon from 'src/Core/Settings/images/EnvelopeIcon';
 import ExitIcon from 'src/Core/Settings/images/ExitIcon';
 
+const subItems = [{ id: 1, value: 'Item 1', isSelected: false }, { id: 2, value: 'Item 2', isSelected: true }, {
+  id: 3,
+  value: 'Item 3',
+  isSelected: false
+}];
+
 export default function SettingsScreen(props) {
-  const {navigation} = props;
+  const { navigation } = props;
   const [isUserNameModalOpen, setIsUserNameModalOpen] = useState(false);
   const [isSupportCenterModalOpen, setIsSupportCenterModalOpen] = useState(false);
   const [isDeleteAccountConfirmModalOpen, setIsDeleteAccountConfirmModalOpen] = useState(false);
+  const [isVoiceSettingsOpen, setIsVoiceSettingsOpen] = useState(false);
+
+  function toggleOpen() {
+    setIsVoiceSettingsOpen(isVoiceSettingsOpen => !isVoiceSettingsOpen);
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+  }
 
   return (
     <Container>
       <PaInputModal header='User Name' subHeader='Change the user name' inputPlaceholder='Enter your new name here'
                     modalVisible={isUserNameModalOpen} setModalVisible={setIsUserNameModalOpen}
-                    onSubmit={() => setIsUserNameModalOpen(false)}/>
+                    onSubmit={() => setIsUserNameModalOpen(false)} />
       <PaInputModal multiline header='Contact support' subHeader='Leave a message to our support center'
                     inputPlaceholder='Enter your ticket message text' modalVisible={isSupportCenterModalOpen}
-                    setModalVisible={setIsSupportCenterModalOpen} onSubmit={() => setIsSupportCenterModalOpen(false)}/>
+                    setModalVisible={setIsSupportCenterModalOpen} onSubmit={() => setIsSupportCenterModalOpen(false)} />
       <PaConfirm confirmText='you want to delete a account?'
                  onConfirmPress={() => setIsDeleteAccountConfirmModalOpen(false)}
                  onRejectPress={() => setIsDeleteAccountConfirmModalOpen(false)}
-                 modalVisible={isDeleteAccountConfirmModalOpen} setModalVisible={setIsDeleteAccountConfirmModalOpen}/>
+                 modalVisible={isDeleteAccountConfirmModalOpen} setModalVisible={setIsDeleteAccountConfirmModalOpen} />
       <PageTitle>Settings</PageTitle>
       <SettingsContentContainer contentContainerStyle={{
         rowGap: 20
       }}>
         <SettingsBlockContainer>
-          <PaAccordion roundedTop hasArrowIcon iconComponent={<UserIcon/>}
+          <PaAccordion roundedTop hasArrowIcon iconComponent={<UserIcon />}
                        settingsItemTitle='User name'
-                       settingsItemValue='Don Norman' onPress={() => setIsUserNameModalOpen(!isUserNameModalOpen)}/>
-          <Divider width='80%'/>
-          <PaAccordion hasArrowIcon isDisabled iconComponent={<LockIcon/>} settingsItemTitle='Password'
-                       settingsItemValue='Change password'/>
-          <Divider width='80%'/>
-          <PaAccordion roundedBottom hasArrowIcon isDisabled iconComponent={<EnvelopeIcon/>} settingsItemTitle='Email'
-                       settingsItemValue='donnorman@gmail.com'/>
+                       settingsItemValue='Don Norman' onPress={() => setIsUserNameModalOpen(!isUserNameModalOpen)} />
+          <Divider width='80%' />
+          <PaAccordion hasArrowIcon isDisabled iconComponent={<LockIcon />} settingsItemTitle='Password'
+                       settingsItemValue='Change password' />
+          <Divider width='80%' />
+          <PaAccordion roundedBottom hasArrowIcon isDisabled iconComponent={<EnvelopeIcon />} settingsItemTitle='Email'
+                       settingsItemValue='donnorman@gmail.com' />
         </SettingsBlockContainer>
 
         <SettingsBlockContainer>
           <PaAccordion roundedTop settingsItemTitle='Terms of Use' onPress={() =>
             navigation.navigate('TermsOfUseScreen')
-          }/>
-          <Divider width='95%'/>
+          } />
+          <Divider width='95%' />
           <PaAccordion settingsItemTitle='Privacy Policy' onPress={() =>
             navigation.navigate('PrivacyPolicyScreen')
-          }/>
-          <Divider width='95%'/>
+          } />
+          <Divider width='95%' />
           <PaAccordion roundedBottom settingsItemTitle='Support center'
-                       onPress={() => setIsSupportCenterModalOpen(!isSupportCenterModalOpen)}/>
+                       onPress={() => setIsSupportCenterModalOpen(!isSupportCenterModalOpen)} />
         </SettingsBlockContainer>
 
 
         <SettingsBlockContainer>
-          <PaAccordion roundedTop roundedBottom hasArrowIcon style={{width: '100%'}} iconComponent={<ExitIcon/>}
+          <PaAccordion roundedTop roundedBottom hasArrowIcon style={{ width: '100%' }} iconComponent={<ExitIcon />}
                        settingsItemTitle='Delete account'
-                       onPress={() => setIsDeleteAccountConfirmModalOpen(!isDeleteAccountConfirmModalOpen)}/>
+                       onPress={() => setIsDeleteAccountConfirmModalOpen(!isDeleteAccountConfirmModalOpen)} />
+        </SettingsBlockContainer>
+
+        <SettingsBlockContainer>
+          <PaAccordion roundedTop roundedBottom hasArrowIcon iconComponent={<EnvelopeIcon />} settingsItemTitle='Voice'
+                       settingsItemValue='Sandra' hasSub subItems={subItems} isSubOpen={isVoiceSettingsOpen}
+                       onPress={toggleOpen} />
         </SettingsBlockContainer>
       </SettingsContentContainer>
     </Container>

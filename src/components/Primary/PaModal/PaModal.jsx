@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, StyleSheet, TouchableOpacity } from 'react-native';
 
 export default function PaModal(props) {
-  const { modalVisible, setModalVisible, isCendered, children } = props;
+  const { modalVisible, setModalVisible, isCentered, children } = props;
 
   return (
     <Modal
@@ -13,7 +13,7 @@ export default function PaModal(props) {
         setModalVisible(!modalVisible);
       }}>
       <TouchableOpacity
-        style={[styles.centeredView, {marginBottom: isCendered ? 22 : 250}]}
+        style={[styles.centeredView, {marginBottom: isCentered ? 22 : 250}]}
         onPress={() => setModalVisible(!modalVisible)}>
         <TouchableOpacity style={styles.modalView} activeOpacity={1}>
           {children}

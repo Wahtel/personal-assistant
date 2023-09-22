@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/native';
 import SettingsArrowIcon from './images/SettingsArrowIcon';
+import AccordionSubItem from './components/AccordionSubItem/AccordionSubItem';
 
 export default function PaAccordion(props) {
   const {
@@ -12,29 +13,43 @@ export default function PaAccordion(props) {
     roundedBottom,
     roundedTop,
     isDisabled,
-    onPress
+    onPress,
+    hasSub = false,
+    subItems = [],
+    isSubOpen
   } = props;
   return (
-    <SettingsItemContainer
-      style={{
-        opacity: isDisabled ? 0.5 : 1,
-        borderTopLeftRadius: roundedTop ? 10 : 0,
-        borderTopRightRadius: roundedTop ? 10 : 0,
-        borderBottomLeftRadius: roundedBottom ? 10 : 0,
-        borderBottomRightRadius: roundedBottom ? 10 : 0
-      }}
-      onPress={onPress}>
-      {iconComponent ? <SettingsIconContainer>
-        {iconComponent}
-      </SettingsIconContainer> : null}
-      <SettingsItemContentContainer>
-        <SettingsItemTitle style={style} numberOfLines={1} ellipsizeMode='tail'>{settingsItemTitle}</SettingsItemTitle>
-        <SettingsItemValue numberOfLines={1} ellipsizeMode='tail'>{settingsItemValue}</SettingsItemValue>
-      </SettingsItemContentContainer>
-      {hasArrowIcon ? <SettingsArrowIcon /> : null}
-    </SettingsItemContainer>
+    <AccordionContainer>
+      <SettingsItemContainer
+        style={{
+          opacity: isDisabled ? 0.5 : 1,
+          borderTopLeftRadius: roundedTop ? 10 : 0,
+          borderTopRightRadius: roundedTop ? 10 : 0,
+          borderBottomLeftRadius: roundedBottom ? 10 : 0,
+          borderBottomRightRadius: roundedBottom ? 10 : 0,
+          backgroundColor: hasSub ? '#242427' : '#18181B'
+        }}
+        onPress={onPress}>
+        {iconComponent ? <SettingsIconContainer>
+          {iconComponent}
+        </SettingsIconContainer> : null}
+        <SettingsItemContentContainer>
+          <SettingsItemTitle style={style} numberOfLines={1}
+                             ellipsizeMode='tail'>{settingsItemTitle}</SettingsItemTitle>
+          <SettingsItemValue numberOfLines={1} ellipsizeMode='tail'>{settingsItemValue}</SettingsItemValue>
+        </SettingsItemContentContainer>
+        {hasArrowIcon ? <SettingsArrowIcon /> : null}
+
+      </SettingsItemContainer>
+      {hasSub && isSubOpen ? subItems.map((item, i) => <AccordionSubItem title={item.value} isSelected={item.isSelected}
+                                                                         isLastSubItem={i === subItems.length - 1} />) : null}
+    </AccordionContainer>
   );
 };
+
+const AccordionContainer = styled.View`
+  width: 100%;
+`;
 
 const SettingsItemContainer = styled.TouchableOpacity`
   display: flex;
@@ -78,8 +93,3 @@ const SettingsItemValue = styled.Text`
   opacity: 0.6;
   text-align: right;
 `;
-
-
-
-
-
