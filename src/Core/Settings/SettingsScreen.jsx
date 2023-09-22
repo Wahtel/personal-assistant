@@ -12,8 +12,12 @@ import LockIcon from 'src/Core/Settings/images/LockIcon';
 import EnvelopeIcon from 'src/Core/Settings/images/EnvelopeIcon';
 import ExitIcon from 'src/Core/Settings/images/ExitIcon';
 
-const subItems = [{ id: 1, value: 'Item 1', isSelected: false }, { id: 2, value: 'Item 2', isSelected: true }, {
+const subItems = [{ id: 1, value: 'Item 1', isSelected: false }, { id: 2, type: 'separator' }, {
   id: 3,
+  value: 'Item 2',
+  isSelected: true
+}, { id: 4, type: 'separator' }, {
+  id: 5,
   value: 'Item 3',
   isSelected: false
 }];
@@ -81,7 +85,7 @@ export default function SettingsScreen(props) {
         <SettingsBlockContainer>
           <PaAccordion roundedTop roundedBottom hasArrowIcon iconComponent={<EnvelopeIcon />} settingsItemTitle='Voice'
                        settingsItemValue='Sandra' hasSub subItems={subItems} isSubOpen={isVoiceSettingsOpen}
-                       onPress={toggleOpen} />
+                       onPress={toggleOpen} iconContainerBackgroundColor='red'/>
         </SettingsBlockContainer>
       </SettingsContentContainer>
     </Container>

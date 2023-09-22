@@ -1,11 +1,16 @@
 import React from 'react';
 import styled from '@emotion/native';
-import SettingsArrowIcon from './images/SettingsArrowIcon';
+
 import AccordionSubItem from './components/AccordionSubItem/AccordionSubItem';
+import Divider from '../Divider/Divider';
+
+import SettingsArrowIcon from './images/SettingsArrowIcon';
+
 
 export default function PaAccordion(props) {
   const {
     hasArrowIcon,
+    iconContainerBackgroundColor,
     iconComponent,
     settingsItemTitle,
     settingsItemValue,
@@ -18,6 +23,15 @@ export default function PaAccordion(props) {
     subItems = [],
     isSubOpen
   } = props;
+
+  function renderSubItem(item, i) {
+    if (item.type === 'separator') return <Divider width='95%' />;
+
+    return <AccordionSubItem key={item.id} title={item.value}
+                             isSelected={item.isSelected}
+                             isLastSubItem={i === subItems.length - 1} />;
+  }
+
   return (
     <AccordionContainer>
       <SettingsItemContainer
@@ -30,7 +44,7 @@ export default function PaAccordion(props) {
           backgroundColor: hasSub ? '#242427' : '#18181B'
         }}
         onPress={onPress}>
-        {iconComponent ? <SettingsIconContainer>
+        {iconComponent ? <SettingsIconContainer style={{ backgroundColor: iconContainerBackgroundColor || '#323232'}}>
           {iconComponent}
         </SettingsIconContainer> : null}
         <SettingsItemContentContainer>
@@ -41,14 +55,14 @@ export default function PaAccordion(props) {
         {hasArrowIcon ? <SettingsArrowIcon /> : null}
 
       </SettingsItemContainer>
-      {hasSub && isSubOpen ? subItems.map((item, i) => <AccordionSubItem title={item.value} isSelected={item.isSelected}
-                                                                         isLastSubItem={i === subItems.length - 1} />) : null}
+      {hasSub && isSubOpen ? subItems.map((item, i) => renderSubItem(item, i)) : null}
     </AccordionContainer>
   );
 };
 
 const AccordionContainer = styled.View`
   width: 100%;
+  align-items: flex-end;
 `;
 
 const SettingsItemContainer = styled.TouchableOpacity`
