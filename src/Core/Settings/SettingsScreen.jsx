@@ -15,11 +15,11 @@ import ExitIcon from 'src/Core/Settings/images/ExitIcon';
 const subItems = [{ id: 1, value: 'Item 1', isSelected: false }, { id: 2, type: 'separator' }, {
   id: 3,
   value: 'Item 2',
-  isSelected: true
+  isSelected: false
 }, { id: 4, type: 'separator' }, {
   id: 5,
   value: 'Item 3',
-  isSelected: false
+  isSelected: true
 }];
 
 export default function SettingsScreen(props) {
@@ -83,9 +83,9 @@ export default function SettingsScreen(props) {
         </SettingsBlockContainer>
 
         <SettingsBlockContainer>
-          <PaAccordion roundedTop roundedBottom hasArrowIcon iconComponent={<EnvelopeIcon />} settingsItemTitle='Voice'
-                       settingsItemValue='Sandra' hasSub subItems={subItems} isSubOpen={isVoiceSettingsOpen}
-                       onPress={toggleOpen} iconContainerBackgroundColor='red'/>
+          <PaAccordion roundedTop roundedBottom hasArrowIcon hasSub iconComponent={<EnvelopeIcon />} settingsItemTitle='Voice'
+                       settingsItemValue='Sandra'  iconContainerBackgroundColor='red' subItems={subItems} isSubOpen={isVoiceSettingsOpen}
+                       onPress={toggleOpen} />
         </SettingsBlockContainer>
       </SettingsContentContainer>
     </Container>

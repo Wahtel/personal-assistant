@@ -1,7 +1,7 @@
-import React from "react";
-import { Text } from "react-native";
-import styled from "@emotion/native";
-import { ClearIcon } from "src/ui/icons/ClearIcon";
+import React from 'react';
+import { Text, TouchableOpacity } from 'react-native';
+import styled from '@emotion/native';
+import { ClearIcon } from 'src/ui/icons/ClearIcon';
 
 const Container = styled.View`
   width: 90%;
@@ -10,6 +10,13 @@ const Container = styled.View`
   border-radius: 14px;
   background-color: #1C1C1E;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const HintContentContainer = styled.TouchableOpacity`
+  display: flex;
+  flex: 1;
   flex-direction: row;
   align-items: center;
 `;
@@ -44,10 +51,10 @@ const Description = styled.Text`
   margin-top: 5px;
 `;
 
-const StyledIcon = styled(ClearIcon)`
-  position: absolute;
-  top: 13px;
-  right: 13px;
+const CloseIconWrapper = styled.TouchableOpacity`
+  display: flex;
+  flex-direction: row;
+  height: 100%;
 `;
 
 export const TasksHint = (props) => {
@@ -55,14 +62,18 @@ export const TasksHint = (props) => {
 
   return (
     <Container>
-      <StyledIcon color="#5F5F5F" />
-      <EmojiContainer>
-        <Text>{icon}</Text>
-      </EmojiContainer>
-      <TextContainer>
-        <Title>{title}</Title>
-        <Description>{description}</Description>
-      </TextContainer>
+      <HintContentContainer>
+        <EmojiContainer>
+          <Text>{icon}</Text>
+        </EmojiContainer>
+        <TextContainer>
+          <Title>{title}</Title>
+          <Description>{description}</Description>
+        </TextContainer>
+      </HintContentContainer>
+      <CloseIconWrapper onPress={() => console.log('Close')}>
+        <ClearIcon color='#5F5F5F' />
+      </CloseIconWrapper>
     </Container>
   );
 };

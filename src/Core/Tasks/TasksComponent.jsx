@@ -55,8 +55,8 @@ export const TasksComponent = () => {
   return (
     <Container>
       <ScrollView>
-        <TasksHint icon='🥳' title='Welcome to Promts!'
-                   description='You can choose a topic to use the chat more conveniently' />
+        <TasksHint icon='🤖' title='Personalize Assistant'
+                   description='Tailor your assistant to meet your real-life needs' />
         <Categories title='Recent' tasks={Tasks} />
         <Categories title='Suggested' tasks={Tasks} />
       </ScrollView>

@@ -25,7 +25,9 @@ export default function PaAccordion(props) {
   } = props;
 
   function renderSubItem(item, i) {
-    if (item.type === 'separator') return <Divider width='95%' />;
+    if (item.type === 'separator') return <Divider key={item.id} width='95%' />;
+
+    console.log(item.id)
 
     return <AccordionSubItem key={item.id} title={item.value}
                              isSelected={item.isSelected}
