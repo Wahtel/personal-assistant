@@ -58,11 +58,11 @@ const CloseIconWrapper = styled.TouchableOpacity`
 `;
 
 export const TasksHint = (props) => {
-  const { icon, title, description } = props;
+  const { icon, title, description, onPress, onClose } = props;
 
   return (
     <Container>
-      <HintContentContainer>
+      <HintContentContainer onPress={onPress}>
         <EmojiContainer>
           <Text>{icon}</Text>
         </EmojiContainer>
@@ -71,7 +71,7 @@ export const TasksHint = (props) => {
           <Description>{description}</Description>
         </TextContainer>
       </HintContentContainer>
-      <CloseIconWrapper onPress={() => console.log('Close')}>
+      <CloseIconWrapper onPress={onClose}>
         <ClearIcon color='#5F5F5F' />
       </CloseIconWrapper>
     </Container>

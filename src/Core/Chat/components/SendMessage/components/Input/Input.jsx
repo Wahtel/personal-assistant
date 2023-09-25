@@ -80,6 +80,7 @@ const View = styled.View`
 
 export const Input = (props) => {
   const {
+    navigation,
     isRecording,
     startRecording,
     stopRecording,
@@ -121,7 +122,7 @@ export const Input = (props) => {
   return (
     <InputContainer>
       <View>
-        <Menu />
+        <Menu navigation={navigation} />
       </View>
       <InputWrapper>
         <StyledInput

@@ -4,6 +4,7 @@ import { SafeAreaView, Animated } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import OutsidePressHandler from "react-native-outside-press";
 import { PlusIcon } from "src/ui/icons/PlusIcon";
+import { PencilIcon } from 'src/ui/icons/PencilIcon';
 import { MenuItem } from "./MenuItem";
 
 const MenuContainer = styled.TouchableOpacity`
@@ -34,7 +35,8 @@ const Divider = styled.View`
   // top: 50%;
 `;
 
-export const MenuComponent = () => {
+export const MenuComponent = (props) => {
+  const { navigation } = props;
   const [visible, setVisible] = useState(false);
   const [menuAnimation] = useState(new Animated.Value(0));
   const anchroColor = visible ? "#0C7BEB" : "#FFFFFF";
@@ -78,9 +80,9 @@ export const MenuComponent = () => {
         ],
       }}
     >
-      <MenuItem text="Item 1" Icon={PlusIcon} />
+      <MenuItem text="Customize chat" Icon={PencilIcon} onPress={() => navigation.navigate('CustomizeAssistantScreen')}/>
       <Divider />
-      <MenuItem text="Item 2" Icon={PlusIcon} />
+      <MenuItem text="New chat" Icon={PlusIcon} />
     </Menu>
   );
 

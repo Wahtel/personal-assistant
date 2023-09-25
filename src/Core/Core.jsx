@@ -1,21 +1,19 @@
 import React from "react";
 
 import SettingsNavigator from './Settings/SettingsNavigator'
-import CustomizeAssistant from './CustomizeAssistant/CustomizeAssistant';
+import TasksNavigator from './Tasks/TasksNavigator';
 import { TabNavigator } from "./TabNavigator";
 import { ChatNavigator } from "./Chat";
-import { Tasks } from "./Tasks";
 import { History } from "./History";
 
 export const Core = () => {
   return (
     <TabNavigator
       components={[
-        { name: "Tasks", component: Tasks },
+        { name: "Tasks", component: TasksNavigator },
         { name: "Chat", component: ChatNavigator },
         { name: "History", component: History },
-        { name: "Settings", component: SettingsNavigator },
-        { name: "CustomizeAssistant", component: CustomizeAssistant },
+        { name: "Settings", component: SettingsNavigator }
       ]}
     />
   );

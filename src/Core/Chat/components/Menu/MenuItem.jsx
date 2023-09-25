@@ -23,10 +23,10 @@ const Item = styled.Text`
 `;
 
 export const MenuItem = (props) => {
-  const { text, Icon } = props;
+  const { text, Icon, onPress } = props;
 
   return (
-    <Container onPress={(e) => e.preventDefault}>
+    <Container onPress={onPress}>
       <ItemWrapper>
         <Item>{text}</Item>
         <Icon />

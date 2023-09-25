@@ -8,7 +8,7 @@ const Container = styled.SafeAreaView`
 `;
 
 export const ChatComponent = props => {
-  const { messages, fetching } = props;
+  const { navigation, messages, fetching } = props;
 
   // useEffect(() => {
   //   console.log("ChatComponent");
@@ -17,8 +17,8 @@ export const ChatComponent = props => {
   return (
     <Container>
       {/* <Menu /> */}
-      <Messages messages={messages} />
-      <SendMessage sendFile={props.sendFile} fetching={fetching} />
+      <Messages navigation={navigation} messages={messages} />
+      <SendMessage navigation={navigation} sendFile={props.sendFile} fetching={fetching} />
     </Container>
   );
 };

@@ -19,7 +19,7 @@ const StyledText = styled.Text`
 `;
 
 export const SendMessage = (props) => {
-  const { sendFile, fetching } = props;
+  const { navigation, sendFile, fetching } = props;
   const recordingRef = useRef(null);
   const [isRecording, setIsRecording] = useState(false);
   const [audioURI, setAudioURI] = useState(null);
@@ -95,6 +95,7 @@ export const SendMessage = (props) => {
       >
         {/* {renderButton()} */}
         <Input
+          navigation={navigation}
           isRecording={isRecording}
           startRecording={startRecording}
           stopRecording={stopRecording}

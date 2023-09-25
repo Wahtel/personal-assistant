@@ -14,5 +14,5 @@ const Container = styled.SafeAreaView`
   display: flex;
   align-items: center;
   flex: 1;
-  background-color: #0a0c0b;
+  background-color: red;
 `;
