@@ -12,27 +12,11 @@ import LockIcon from 'src/Core/Settings/images/LockIcon';
 import EnvelopeIcon from 'src/Core/Settings/images/EnvelopeIcon';
 import ExitIcon from 'src/Core/Settings/images/ExitIcon';
 
-const subItems = [{ id: 1, value: 'Item 1', isSelected: false }, { id: 2, type: 'separator' }, {
-  id: 3,
-  value: 'Item 2',
-  isSelected: false
-}, { id: 4, type: 'separator' }, {
-  id: 5,
-  value: 'Item 3',
-  isSelected: true
-}];
-
 export default function SettingsScreen(props) {
   const { navigation } = props;
   const [isUserNameModalOpen, setIsUserNameModalOpen] = useState(false);
   const [isSupportCenterModalOpen, setIsSupportCenterModalOpen] = useState(false);
   const [isDeleteAccountConfirmModalOpen, setIsDeleteAccountConfirmModalOpen] = useState(false);
-  const [isVoiceSettingsOpen, setIsVoiceSettingsOpen] = useState(false);
-
-  function toggleOpen() {
-    setIsVoiceSettingsOpen(isVoiceSettingsOpen => !isVoiceSettingsOpen);
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-  }
 
   return (
     <Container>
@@ -81,12 +65,6 @@ export default function SettingsScreen(props) {
                        settingsItemTitle='Delete account'
                        onPress={() => setIsDeleteAccountConfirmModalOpen(!isDeleteAccountConfirmModalOpen)} />
         </SettingsBlockContainer>
-
-        <SettingsBlockContainer>
-          <PaAccordion roundedTop roundedBottom hasArrowIcon hasSub iconComponent={<EnvelopeIcon />} settingsItemTitle='Voice'
-                       settingsItemValue='Sandra'  iconContainerBackgroundColor='red' subItems={subItems} isSubOpen={isVoiceSettingsOpen}
-                       onPress={toggleOpen} />
-        </SettingsBlockContainer>
       </SettingsContentContainer>
     </Container>
   );
@@ -99,13 +77,6 @@ const Container = styled.SafeAreaView`
   background-color: #0a0c0b;
 `;
 
-const SettingsContentContainer = styled.ScrollView`
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
 const PageTitle = styled.Text`
   width: 90%;
   margin: 20px 0;
@@ -113,6 +84,13 @@ const PageTitle = styled.Text`
   font-family: "SF-Pro-Text-Bold";
   font-weight: 600;
   color: #ffffff;
+`;
+
+const SettingsContentContainer = styled.ScrollView`
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 const SettingsBlockContainer = styled.View`
